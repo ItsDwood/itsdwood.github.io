@@ -383,5 +383,68 @@
     "title": "Introduction to Algorithmic Disparity: COMPAS",
     "section": "",
     "text": "Can we have it all? Could we modify the COMPAS algorithm in such a way that it satisfies all the ideas of fairness that we discussed above? Could we then call it “fair” or “unbiased?”\nAre there other ways to define fairness? Which ones are most compelling to us? Does the right idea of fairness depend on the context in which we apply it?\nHow did this happen? The COMPAS algorithm was never trained on race data about the defendant. How did it happen that this algorithm nevertheless made recommendations at different rates across groups?\nIs automated decision-making legitimate in this setting? Can it be legitimate (just, fair) to use an automated decision-system for making recommendations about parole and sentencing decisions at all? What safeguards and forms of recourse are necessary for the legitimate use of automated decision-making in criminal justice?\nWhat are the systemic impacts? Disparate sentencing decisions can have downstream impacts on communities and institutions. How could application of the COMPAS algorithm exacerbate systemic inequalities?"
+  },
+  {
+    "objectID": "posts/WiDS-post/Palmer-Penguins-Warmup.html",
+    "href": "posts/WiDS-post/Palmer-Penguins-Warmup.html",
+    "title": "Donovan's Awesome CSCI 0451 Blog",
+    "section": "",
+    "text": "import pandas as pd\nfrom matplotlib import pyplot as plt\nimport seaborn as sns\n\nurl = \"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/palmer-penguins/palmer-penguins.csv\"\ndf = pd.read_csv(url)\n\ndf\n\nsummary_table = df.groupby(['Species', 'Sex']).agg({'Body Mass (g)': 'mean'})\n\nprint(summary_table)\n\n# Create a scatterplot\nsns.scatterplot(data=df, x=\"Culmen Length (mm)\", y=\"Culmen Depth (mm)\", hue=\"Species\")\n\n                                                  Body Mass (g)\nSpecies                                   Sex                  \nAdelie Penguin (Pygoscelis adeliae)       FEMALE    3368.835616\n                                          MALE      4043.493151\nChinstrap penguin (Pygoscelis antarctica) FEMALE    3527.205882\n                                          MALE      3938.970588\nGentoo penguin (Pygoscelis papua)         .         4875.000000\n                                          FEMALE    4679.741379\n                                          MALE      5484.836066"
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html",
+    "href": "posts/WiDS-post/index.html",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "",
+    "text": "In this blog post, we explore the pivotal role of women in the fields of computing, math, and engineering, and the significant impact of conferences like WiDS (Women in Data Science) in fostering change. We delve into the historical context of women’s participation in computing, highlight the current challenges and barriers they face, and celebrate the achievements of notable women scholars who are pushing the boundaries of data science and its application in diverse fields. Through the insights from Professors Amy Yuen, Jessica L’Roe, Laura Biester, and Sarah Brown, we learn about the transformative power of data science in political science, geography, mental health, and the quest for fairness in machine learning. This post aims to illuminate the importance of diversity in STEM and inspire action towards a more inclusive future."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#abstract",
+    "href": "posts/WiDS-post/index.html#abstract",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "",
+    "text": "In this blog post, we explore the pivotal role of women in the fields of computing, math, and engineering, and the significant impact of conferences like WiDS (Women in Data Science) in fostering change. We delve into the historical context of women’s participation in computing, highlight the current challenges and barriers they face, and celebrate the achievements of notable women scholars who are pushing the boundaries of data science and its application in diverse fields. Through the insights from Professors Amy Yuen, Jessica L’Roe, Laura Biester, and Sarah Brown, we learn about the transformative power of data science in political science, geography, mental health, and the quest for fairness in machine learning. This post aims to illuminate the importance of diversity in STEM and inspire action towards a more inclusive future."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#part-1-why-spotlight-women-in-data-science",
+    "href": "posts/WiDS-post/index.html#part-1-why-spotlight-women-in-data-science",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Part 1: Why Spotlight Women in Data Science?",
+    "text": "Part 1: Why Spotlight Women in Data Science?"
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#professor-amy-yuen",
+    "href": "posts/WiDS-post/index.html#professor-amy-yuen",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Professor Amy Yuen",
+    "text": "Professor Amy Yuen\nProfessor Amy Yuen is a Professor of Political Science at Middlebury College. Her research focused on the United Nations Security Council and aimed to answer if it is truly a democratic institution. Within the United Nations Security Council, elected members do not have veto power, Professor Yuen hoped to answer whether these members continue to run if this is the case, and if there is a lack of representation within the council. In her research, she measured the number of resolutions, formal meetings and consultations, presidential statements, resolution Co-sponsorships, and Aria-Formula Meetings. She found that sponsorships showed the biggest differences in who is doing what. Another aspect of her research was investigating the members that sit on the council, and the frequency of which. She found that the data showed that countries were geared more towards inclusion over time. She concluded by finding that while the council was not entirely representative, it could be worse. She plans to continue with this research to see how this finding plays into the output and effectiveness of the council. From her talk, I learned how data science can be applied to essentially any aspect of our lives. Before this talk, data science seemed strictly technical and I would have never thought about how it can be used in the context of politics and policy. The talk opened my eyes to the realm of possibilities that data science presents in so many varying fields."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#professor-jessica-lroe",
+    "href": "posts/WiDS-post/index.html#professor-jessica-lroe",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Professor Jessica L’Roe",
+    "text": "Professor Jessica L’Roe\nProfessor Jessica L’Roe is an assistant professor of Geography at Middlebury College. Professor Roe spoke about her research into monitoring change in tropical forest landscapes within East Africa. Within her research, she found that mothers were more willing to invest in education rather than land because it was a better bet for the success of their children. Although her research was an important crux of her talk, one of the main messages she wanted to convey was that all kinds of things can be “data”. Regardless of whether something is abstract or physical, it can often be used to analyze certain behaviors or outcomes. She concluded her talk by emphasizing how women are making large contributions in her field and to just “Go for it”! After listening to her talk, I learned the importance of varying types of data and utilization, but more importantly how it was collected. Her data was collected using the help of locals and traveling from settlement to settlement. It was so interesting to hear this type of data collection as before this, most of the data collection I was used to was simply clicking on a link or downloading a dataset. It showed me that data science can transcend the keyboard and has real implications for REAL people."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#professor-laura-biester",
+    "href": "posts/WiDS-post/index.html#professor-laura-biester",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Professor Laura Biester",
+    "text": "Professor Laura Biester\nProfessor Laura Biester is a Computer Science Professor at Middlebury College. Professor Biester spoke about her research regarding the connection between language and mental health. She used a corpus of Reddit posts and comments from 2006-2019 to predict whether or not language could be used to identify those who were diagnosed with depression before their diagnosis. Through multiple models such as logistic regression and MentalBeRT, she was able to successfully produce a model that was relatively accurate in predicting depression in users using only language. Like Professor L’Roe’s talk, although much of Professor Biester’s talk was focused on her research, a huge point she emphasized was that data collection is a huge part of the data science process - it’s not just about building models. This part struck true to me as I learned that no matter how good your model is, it is only as good as the data it is being supplied with. Data preprocessing and determining which parts of data to use or not use is crucial in the data science process."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#professor-sarah-brown",
+    "href": "posts/WiDS-post/index.html#professor-sarah-brown",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Professor Sarah Brown",
+    "text": "Professor Sarah Brown\nProfessor Sarah Brown is an assistant professor of Computer Science at the University of Rhode Island. In her talk, her research focused on how to make machine learning more fair. More broadly, however, she discussed the implications of data science through the use of “keys”. These keys were: Disciplines are communities, meet people where they are, and understand data’s context. She mentioned three projects and the “lock” for each, which is something she needed to figure out for it all to work and flow.\nThese keys were used to unlock these locks and culminate a successful data science process. The keys were picked up often from something that had no explicit relation to data science itself but were collected from other aspects of her life. For example, one of the skills she picked up from social studies was the ability to use context to understand primary sources. She mentions that oftentimes, data scientists fall into the trap of only thinking like a data scientist and approaching the problem from one particular angle. By using other disciplines/individuals’ perspectives, you may be able to figure out a problem in a more efficient/effective way than you would have otherwise. She concluded by stressing the importance of these three keys and emphasizing the idea of understanding “why” rather than just “doing” when it comes to data science. Through this, I learned key principles that will influence the future of my computer science journey."
+  },
+  {
+    "objectID": "posts/WiDS-post/index.html#conclusion",
+    "href": "posts/WiDS-post/index.html#conclusion",
+    "title": "The Women in Data Science (WiDS) Conference at Middlebury College",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis exploration into the status of women in computing and the supportive role of initiatives like WiDS has been enlightening. It has underscored the importance of diversity for innovation and the vast potential of data science to impact various aspects of society positively. From the historical context of women’s evolving role in computing to the cutting-edge research conducted by leading female data scientists, this journey has highlighted both the challenges and the incredible opportunities that lie ahead. As we look forward to a more inclusive and equitable future in STEM, the lessons learned here inspire continued advocacy and action. My next steps involve deepening my understanding of how to support diversity in tech and exploring more about how data science can be leveraged for social good."
   }
 ]
