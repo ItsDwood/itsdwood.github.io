@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Phil Chodrow">
-<meta name="dcterms.date" content="2023-03-10">
-<meta name="description" content="A new blog post that I just made!">
+<meta name="author" content="Donovan Wood">
+<meta name="dcterms.date" content="2024-02-28">
+<meta name="description" content="My second blog post, creating an automated decision system for a hypothetical bank extending credit">
 
-<title>My Awesome CSCI 0451 Blog - Timnit Gebru</title>
+<title>Donovan’s Awesome CSCI 0451 Blog - Whose Costs?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -121,36 +121,10 @@ background-image: url(../../img/landscape.png);
 background-size: cover;
       }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -163,7 +137,7 @@ window.Quarto = {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">My Awesome CSCI 0451 Blog</span>
+    <span class="navbar-title">Donovan’s Awesome CSCI 0451 Blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -174,7 +148,7 @@ window.Quarto = {
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">Donovan’s Blog Post</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/"> <i class="bi bi-github" role="img">
@@ -197,10 +171,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Timnit Gebru</h1>
+      <h1 class="title">Whose Costs?</h1>
                   <div>
         <div class="description">
-          A new blog post that I just made!
+          My second blog post, creating an automated decision system for a hypothetical bank extending credit
         </div>
       </div>
                 </div>
@@ -212,14 +186,14 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Phil Chodrow </p>
+               <p>Donovan Wood </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 10, 2023</p>
+        <p class="date">February 28, 2024</p>
       </div>
     </div>
     
@@ -238,79 +212,454 @@ window.Quarto = {
 
 
 
-<div id="cell-1" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> source <span class="im">import</span> Perceptron</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="grabbing-the-data" class="level1">
+<h1>Grabbing the Data</h1>
+<p>The dataset below will be the one I use for this blog post</p>
+<div id="cell-2" class="cell" data-execution_count="121">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/credit-risk/train.csv"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-2" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> Perceptron()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>I did it!!
-not implemented</code></pre>
-</div>
-</div>
-<p>This is an example of the blog posts that you’ll submit as your primary form of learning demonstration in CSCI 0451. I created this post by modifying the file <code>posts/example-blog-post/index.ipynb</code> in VSCode. You can also use JupyterLab for this editing if you prefer. Finally, it is possible to write blog posts without using notebooks by writing <code>.qmd</code> files, as illustrated <a href="https://quarto.org/docs/get-started/hello/vscode.html">here</a>.</p>
-<section id="frontmatter" class="level1">
-<h1>Frontmatter</h1>
-<p>Your notebook needs to contain some metadata: things like the title, author, date, etc. You specify this in a <code>raw</code> cell at the very beginning of the notebook. In this notebook, the contents of this cell is:</p>
-<pre><code>---
-title: Hello Blog
-author: Phil Chodrow
-date: '2023-01-10'
-image: "image.jpg"
-description: "An example blog post illustrating the key techniques you'll need to demonstrate your learning in CSCI 0451."
-format: html
----</code></pre>
-<p>Frontmatter can be fiddly (it’s sensitive to spaces, for example), and so the best approach is usually to copy and paste it from previous blog posts, modifying it as appropriate.</p>
-</section>
-<section id="running-python-code" class="level1">
-<h1>Running Python Code</h1>
-<p>To run Python code, place your code in a Python code block inside your notebook. You can run the code block inside VSCode (or JupyterLab) using the keyboard shortcut <code>ctrl + Enter</code>. You’ll see the result of your computation below the code, including the value of the most recent statement.</p>
-<div id="cell-4" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">"CSCI"</span> <span class="op">+</span> <span class="st">" 0451"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'CSCI 0451'</code></pre>
-</div>
-</div>
-<p>We’ll have lots of opportunities to make data visualizations in this course. These also display inside the notebook, and get converted into your blog post:</p>
-<div id="cell-6" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">1001</span>)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.sin(x)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.plot(x, y)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>xlab <span class="op">=</span> plt.xlabel(<span class="st">"x"</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">=</span> plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>title <span class="op">=</span> plt.gca().<span class="bu">set</span>(title <span class="op">=</span> <span class="st">"My Fancy Plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+<div id="cell-3" class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="122">
 <div>
-<figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">person_age</th>
+<th data-quarto-table-cell-role="th">person_income</th>
+<th data-quarto-table-cell-role="th">person_home_ownership</th>
+<th data-quarto-table-cell-role="th">person_emp_length</th>
+<th data-quarto-table-cell-role="th">loan_intent</th>
+<th data-quarto-table-cell-role="th">loan_grade</th>
+<th data-quarto-table-cell-role="th">loan_amnt</th>
+<th data-quarto-table-cell-role="th">loan_int_rate</th>
+<th data-quarto-table-cell-role="th">loan_status</th>
+<th data-quarto-table-cell-role="th">loan_percent_income</th>
+<th data-quarto-table-cell-role="th">cb_person_default_on_file</th>
+<th data-quarto-table-cell-role="th">cb_person_cred_hist_length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>25</td>
+<td>43200</td>
+<td>RENT</td>
+<td>NaN</td>
+<td>VENTURE</td>
+<td>B</td>
+<td>1200</td>
+<td>9.91</td>
+<td>0</td>
+<td>0.03</td>
+<td>N</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>27</td>
+<td>98000</td>
+<td>RENT</td>
+<td>3.0</td>
+<td>EDUCATION</td>
+<td>C</td>
+<td>11750</td>
+<td>13.47</td>
+<td>0</td>
+<td>0.12</td>
+<td>Y</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>22</td>
+<td>36996</td>
+<td>RENT</td>
+<td>5.0</td>
+<td>EDUCATION</td>
+<td>A</td>
+<td>10000</td>
+<td>7.51</td>
+<td>0</td>
+<td>0.27</td>
+<td>N</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>24</td>
+<td>26000</td>
+<td>RENT</td>
+<td>2.0</td>
+<td>MEDICAL</td>
+<td>C</td>
+<td>1325</td>
+<td>12.87</td>
+<td>1</td>
+<td>0.05</td>
+<td>N</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>29</td>
+<td>53004</td>
+<td>MORTGAGE</td>
+<td>2.0</td>
+<td>HOMEIMPROVEMENT</td>
+<td>A</td>
+<td>15000</td>
+<td>9.63</td>
+<td>0</td>
+<td>0.28</td>
+<td>N</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<section id="visualizations-of-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="visualizations-of-the-data">Visualizations of the Data</h2>
+<p>For the dataset, I created two plots and one summary table in order to contextualize the data.</p>
+<div id="cell-6" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-fig-scatter-loan" class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'person_age'</span>, y<span class="op">=</span><span class="st">'person_emp_length'</span>, hue<span class="op">=</span><span class="st">'loan_intent'</span>, data<span class="op">=</span>df, palette<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Loan Intent vs. Age and Employment Length'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Age'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Employment Length (Years)'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-scatter-loan" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-loan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-scatter-loan-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-loan-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Loan Intent
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Another thing we’ll often do is implement an algorithm in a source file (i.e.&nbsp;a <code>.py</code> file) and then <em>use</em> it in a notebook. To do this, just place the <code>.py</code> file in the same directory as the notebook. For example, the file <code>source.py</code> in the same directory contains a custom function (which prints a message). I can use like this:</p>
-<div id="cell-8" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> source </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>source.my_custom_function()</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>source.my_custom_function()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-scatter-loan-grade" class="cell" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>sns.countplot(x<span class="op">=</span><span class="st">'person_home_ownership'</span>, hue<span class="op">=</span><span class="st">'loan_grade'</span>, data<span class="op">=</span>df, palette<span class="op">=</span><span class="st">'Set2'</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Loan Grade Distribution by Home Ownership'</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Home Ownership'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-scatter-loan-grade" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-loan-grade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-scatter-loan-grade-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-loan-grade-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Loan Grade Distribution by Home Ownership
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summary_table <span class="op">=</span> df.groupby(<span class="st">'loan_intent'</span>).agg({</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loan_int_rate'</span>: <span class="st">'mean'</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loan_amnt'</span>: <span class="st">'mean'</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}).reset_index()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>summary_table.rename(columns<span class="op">=</span>{</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loan_int_rate'</span>: <span class="st">'Average Interest Rate'</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'loan_amnt'</span>: <span class="st">'Average Loan Amount'</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>I implemented this function in the file source.py
-I implemented this function in the file source.py</code></pre>
+<pre><code>         loan_intent  Average Interest Rate  Average Loan Amount
+0  DEBTCONSOLIDATION              10.983305          9620.901149
+1          EDUCATION              10.965465          9460.015604
+2    HOMEIMPROVEMENT              11.160075         10348.725017
+3            MEDICAL              11.051946          9242.269907
+4           PERSONAL              11.009814          9549.427178
+5            VENTURE              10.940866          9516.417425</code></pre>
 </div>
 </div>
 </section>
-<section id="markdown" class="level1">
-<h1>Markdown</h1>
-<p>You can use Markdown syntax to write text in Markdown cells. Markdown allows you to create simple text formatting like bullets, italics, and section headers. The Quarto <a href="https://quarto.org/docs/authoring/markdown-basics.html">description of markdown basics</a> has everything you need to get started.</p>
-<section id="math" class="level2">
-<h2 class="anchored" data-anchor-id="math">Math</h2>
-<p>In addition to regular text using the Markdown specification, you can also write mathematics, enclosed between dollar signs. The syntax for writing math is very similar to the syntax used in the <span class="math inline">\(\LaTeX\)</span> markup language. For example, <code>$f(x) \approx y$</code> renders to <span class="math inline">\(f(x) \approx y\)</span>. To place complex mathematical expressions on their own lines, use double dollar signs. For example, the expression</p>
-<p><code>$$\mathcal{L}(a, b) = \sum_{i = 1}^n (ax_i + b - y_i)^2$$</code></p>
-<p>renders to:</p>
-<p><span class="math display">\[\mathcal{L}(a, b) = \sum_{i = 1}^n (ax_i + b - y_i)^2\;.\]</span></p>
-<p>Behind the scenes, math is powered by the MathJax engine. For more on how to write math, check this handy <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">tutorial and quick reference</a>.</p>
+<section id="part-c-build-a-model" class="level2">
+<h2 class="anchored" data-anchor-id="part-c-build-a-model">Part C: Build a Model</h2>
+<div id="cell-11" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_selection <span class="im">import</span> RFECV</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> classification_report</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/credit-risk/train.csv"</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>df_all <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_all.drop([<span class="st">'loan_grade'</span>, <span class="st">'loan_status'</span>], axis<span class="op">=</span><span class="dv">1</span>)  </span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.get_dummies(df, columns<span class="op">=</span>[<span class="st">'person_home_ownership'</span>, <span class="st">'loan_intent'</span>, <span class="st">'cb_person_default_on_file'</span>], drop_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>df.dropna(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_all.loc[df.index, <span class="st">'loan_status'</span>]  </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(df, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">123</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Scaling</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>logreg <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> RFECV(estimator<span class="op">=</span>logreg, step<span class="op">=</span><span class="dv">1</span>, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>selector <span class="op">=</span> selector.fit(X_train_scaled, y_train)  <span class="co"># Fitting RFECV to the scaled training data</span></span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>X_train_selected <span class="op">=</span> selector.transform(X_train_scaled)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>X_test_selected <span class="op">=</span> selector.transform(X_test_scaled)</span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>model_selected <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>model_selected.fit(X_train_selected, y_train)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> X_train.columns[selector.support_]</span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>y_pred_selected <span class="op">=</span> model_selected.predict(X_test_selected)</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Optimal number of features: </span><span class="sc">{</span>selector<span class="sc">.</span>n_features_<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, y_pred_selected))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Optimal number of features: 8
+              precision    recall  f1-score   support
+
+           0       0.87      0.94      0.90      3614
+           1       0.68      0.48      0.56       968
+
+    accuracy                           0.84      4582
+   macro avg       0.77      0.71      0.73      4582
+weighted avg       0.83      0.84      0.83      4582
+</code></pre>
+</div>
+</div>
+<div id="cell-12" class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> df.columns</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> feature_names[selector.support_]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Selected features:"</span>, selected_features)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Selected features: Index(['loan_amnt', 'loan_int_rate', 'loan_percent_income',
+       'person_home_ownership_OWN', 'person_home_ownership_RENT',
+       'loan_intent_EDUCATION', 'loan_intent_PERSONAL', 'loan_intent_VENTURE'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[selected_features]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">123</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">## MODEL HERE</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>model.fit(X_train_scaled, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'model' is not defined</code></pre>
+</div>
+</div>
+</section>
+<section id="trying-to-do-threshold-stuff-here" class="level2">
+<h2 class="anchored" data-anchor-id="trying-to-do-threshold-stuff-here">Trying to do threshold stuff here</h2>
+<div id="cell-15" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> linear_score(X, w):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X <span class="op">@</span> w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-16" class="cell" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extracting weights </span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>w <span class="op">=</span> model.coef_.flatten()  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="194">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> linear_score(X_train_selected, w) </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-18" class="cell" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.hist(scores, bins<span class="op">=</span><span class="dv">30</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"Score $s$"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Histogram of Computed Scores"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>num_thresholds <span class="op">=</span> <span class="dv">101</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>FPR <span class="op">=</span> np.zeros(num_thresholds)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>TPR <span class="op">=</span> np.zeros(num_thresholds)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.linspace(scores.<span class="bu">min</span>() <span class="op">-</span> <span class="fl">0.1</span>, scores.<span class="bu">max</span>() <span class="op">+</span> <span class="fl">0.1</span>, num_thresholds)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_thresholds):</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> T[i]</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    preds <span class="op">=</span> scores <span class="op">&gt;=</span> t</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    FPR[i] <span class="op">=</span> ((preds <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (y_train <span class="op">==</span> <span class="dv">0</span>)).<span class="bu">sum</span>() <span class="op">/</span> (y_train <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    TPR[i] <span class="op">=</span> ((preds <span class="op">==</span> <span class="dv">1</span>) <span class="op">&amp;</span> (y_train <span class="op">==</span> <span class="dv">1</span>)).<span class="bu">sum</span>() <span class="op">/</span> (y_train <span class="op">==</span> <span class="dv">1</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ax.plot(FPR, TPR, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">0</span>, <span class="dv">1</span>], linestyle<span class="op">=</span><span class="st">"--"</span>, color<span class="op">=</span><span class="st">"grey"</span>)  </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ax.set_aspect(<span class="st">'equal'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"False Positive Rate"</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"True Positive Rate"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"ROC Curve"</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-21" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profit_repaid(loan_amnt, loan_int_rate):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> loan_amnt <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.25</span> <span class="op">*</span> loan_int_rate)<span class="op">**</span><span class="dv">10</span> <span class="op">-</span> loan_amnt</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> profit_default(loan_amnt, loan_int_rate):</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> loan_amnt <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.25</span> <span class="op">*</span> loan_int_rate)<span class="op">**</span><span class="dv">3</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> loan_amnt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>probabilities <span class="op">=</span> model.predict_proba(X_train_scaled)[:, <span class="dv">1</span>]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>expected_gains <span class="op">=</span> []</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">101</span>)  </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> T:</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    preds <span class="op">=</span> probabilities <span class="op">&gt;=</span> t  <span class="co"># Prediction based on threshold: whether the loan would be issued</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize gains and losses</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    total_gain <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Loop over each loan</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> amt, rate, pred, actual <span class="kw">in</span> <span class="bu">zip</span>(X_train[<span class="st">'loan_amnt'</span>], X_train[<span class="st">'loan_int_rate'</span>], preds, y_train):</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> pred:  <span class="co"># Loan is predicted to be issued</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> actual <span class="op">==</span> <span class="dv">1</span>:  <span class="co"># Loan is repaid</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>                total_gain <span class="op">+=</span> profit_repaid(amt, rate)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:  <span class="co"># Loan defaults</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                total_gain <span class="op">+=</span> loss_default(amt, rate)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Average gain per loan</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    avg_gain <span class="op">=</span> total_gain <span class="op">/</span> <span class="bu">len</span>(X_train)</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    expected_gains.append(avg_gain)</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-23" class="cell" data-execution_count="187">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.plot(T, expected_gains, label<span class="op">=</span><span class="st">'Expected Gain'</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"Threshold $t$"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Expected Profit per Loan"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Expected Profit per Loan vs. Threshold"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>plt.xlim(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-24" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> cross_val_score</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> [<span class="st">'loan_amnt'</span>, <span class="st">'loan_int_rate'</span>, <span class="st">'loan_percent_income'</span>, <span class="st">'person_home_ownership_OWN'</span>, <span class="st">'person_home_ownership_RENT'</span>, <span class="st">'loan_intent_EDUCATION'</span>, <span class="st">'loan_intent_PERSONAL'</span>, <span class="st">'loan_intent_VENTURE'</span>]</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>feature_combinations <span class="op">=</span> [</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'loan_amnt'</span>, <span class="st">'loan_int_rate'</span>],  </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    [<span class="st">'loan_percent_income'</span>, <span class="st">'person_home_ownership_RENT'</span>],  </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>    selected_features  </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-25" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> {}</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> features <span class="kw">in</span> feature_combinations:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Scale features</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    X_scaled <span class="op">=</span> scaler.fit_transform(df[features])</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    LR <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    cv_scores_LR <span class="op">=</span> cross_val_score(LR, X_scaled, y, cv<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    results[<span class="bu">str</span>(features)] <span class="op">=</span> cv_scores_LR.mean()</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> combo, score <span class="kw">in</span> results.items():</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Features: </span><span class="sc">{</span>combo<span class="sc">}</span><span class="ch">\n</span><span class="ss">CV Score (mean accuracy): </span><span class="sc">{</span>score<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Features: ['loan_amnt', 'loan_int_rate']
+CV Score (mean accuracy): 0.7973108709793388
+
+Features: ['loan_percent_income', 'person_home_ownership_RENT']
+CV Score (mean accuracy): 0.8471203482091736
+
+Features: ['loan_amnt', 'loan_int_rate', 'loan_percent_income', 'person_home_ownership_OWN', 'person_home_ownership_RENT', 'loan_intent_EDUCATION', 'loan_intent_PERSONAL', 'loan_intent_VENTURE']
+CV Score (mean accuracy): 0.848342893535451
+</code></pre>
+</div>
+</div>
+</section>
+<section id="define-profit-calculation-functions" class="level2">
+<h2 class="anchored" data-anchor-id="define-profit-calculation-functions">Define Profit Calculation Functions</h2>
+</section>
+</section>
+<section id="predict-probability-of-default" class="level1">
+<h1>Predict Probability of Default</h1>
+<section id="evaluate-different-thresholds" class="level2">
+<h2 class="anchored" data-anchor-id="evaluate-different-thresholds">Evaluate Different Thresholds</h2>
 
 
 </section>
