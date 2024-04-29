@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-04-02">
+<meta name="description" content="We reflect on our learning, engagement, and achievement in the first part of the semester.">
 
-<title>Donovan’s Awesome CSCI 0451 Blog - My Awesome CSCI 0451 Blog</title>
+<title>Donovan’s Awesome CSCI 0451 Blog - Mid-Course Reflection</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,35 +68,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>
 
       .quarto-title-block .quarto-title-banner h1,
@@ -111,52 +82,23 @@ ul.task-list li input[type="checkbox"] {
 
       .quarto-title-block .quarto-title-banner {
         color: white;
-background-image: url(img/landscape.png);
+background-image: url(../../img/landscape.png);
 background-size: cover;
       }
 </style>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Donovan’s Awesome CSCI 0451 Blog</span>
     </a>
   </div>
@@ -167,7 +109,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">Donovan’s Blog Post</span></a>
   </li>  
   <li class="nav-item compact">
@@ -190,287 +132,172 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">My Awesome CSCI 0451 Blog</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Mid-Course Reflection</h1>
+                  <div>
+        <div class="description">
+          <p>We reflect on our learning, engagement, and achievement in the first part of the semester.</p>
+        </div>
+      </div>
+                </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 2, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(9)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<section id="csci-0451-mid-course-reflection" class="level1">
+<h1>CSCI 0451: Mid-Course Reflection</h1>
+<p>Donovan Wood</p>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
+<section id="presence-in-class" class="level3">
+<h3 class="anchored" data-anchor-id="presence-in-class">Presence in Class</h3>
+<ul>
+<li><em>How often have you attended class? (e.g.&nbsp;“almost always,” “I missed three times,” etc.)</em> Almost always, have only missed due to sickness.</li>
+<li><em>How often have you taken notes on the core readings ahead of the class period?</em> Again, almost always, except when I am sick</li>
+<li><em>How often have you been <strong>prepared</strong> to present the daily warm-up exercise to your team, even if you weren’t actually called?</em> 100% of the time so far.</li>
+<li><em>How many times have you <strong>actually</strong> presented the daily warm-up to your team?</em> Twice I believe.</li>
+<li><em>How many times have you asked your team for help while presenting the daily warm-up?</em> None, they weren’t ones I had questions on, I do, however, ask for my team’s input if anything is particularly interesting.</li>
+<li><em>How often have you learned something new from a teammate’s presentation of the daily warm-up?</em> Once or twice, our team usually does a good job in discussing all of the warm up when we are in our own groups.</li>
+<li><em>How often have you helped a teammate during the daily warm-up presentation?</em> Never actually, every time our teammates have had no trouble with the warmup.</li>
+</ul>
+</section>
+<section id="presence-outside-of-class" class="level3">
+<h3 class="anchored" data-anchor-id="presence-outside-of-class">Presence Outside of Class</h3>
+<ul>
+<li><em>How often have you attended Student Hours or Peer Help?</em> Occasionally, they often conflict with my other classes or work.</li>
+<li><em>How often have you asked for or received help from your fellow students?</em> Hmm, not as often as I would like, but a couple times before class. Just to see if other folks had the same questions I had.</li>
+<li><em>Have you been regularly participating in a study group outside class?</em> No, unfortunately. I wish I had a study group though!</li>
+<li><em>How often have you posted questions or answers in Slack?</em> Well not in the main questions tab, but I have been asking Professor Chondrow questions quite often recently via slack</li>
+</ul>
+</section>
+<section id="assignments-and-effort" class="level3">
+<h3 class="anchored" data-anchor-id="assignments-and-effort">Assignments and Effort</h3>
+<ul>
+<li><em>How many blog posts have you submitted?</em> 2</li>
+<li><em>How many of your submitted blog posts are at each of the following feedback stages?</em>
+<ul>
+<li>E: <em>No revisions suggested:</em></li>
+<li>M: <em>Revisions useful:</em> 1</li>
+<li>R: <em>Revisions encouraged:</em></li>
+<li>N: <em>Incomplete:</em></li>
+</ul></li>
+<li><em>Roughly how many hours per week have you spent on this course outside of class?</em> Per week probably 15 lately, I’ve been working on a bunch of Blog Posts concurrently</li>
+</ul>
+</section>
+</section>
+<section id="what-youve-learned" class="level2">
+<h2 class="anchored" data-anchor-id="what-youve-learned">What You’ve Learned</h2>
+<p><em>At the beginning of the course, you may have expressed an interest in focusing a little extra on one or two of the following four categories:</em></p>
+<ul>
+<li><strong><em>Theory</em></strong>: <em>mathematical descriptions of frameworks and algorithms.</em></li>
+<li><strong><em>Implementation</em></strong>: <em>effective coding and use of tools in order to implement efficient machine learning algorithms.</em></li>
+<li><strong><em>Experimentation</em></strong>: <em>performing experiments to assess the performance of algorithms and clearly communicating about the results.</em></li>
+<li><strong><em>Social responsibility</em></strong>: <em>critical analysis of sources of bias and harm in machine learning algorithms; theoretical formulations of fairness and bias</em></li>
+</ul>
+<p><em>Did you choose to focus on any of these categories? If so, what have you done in order to pursue your interest?</em></p>
+<p>I would say mainly Theory and Implementation are the ones I have been focusing on lately. One of the main things I wanted to learn with this class was the implementation of ML in regards to the financial market. Through that interest, I have found a vast amount of information online with so many different communities and tips.</p>
+<p>I hope to use these in order to complete my final project and learn a lot through the process!</p>
+</section>
+<section id="reflecting-on-goals" class="level2">
+<h2 class="anchored" data-anchor-id="reflecting-on-goals">Reflecting on Goals</h2>
+<p><em>For each of the categories below, replace the “[your response here]” cell with 1-2 paragraphs in which you reflect on the following questions:</em></p>
+<ul>
+<li><em>In what ways are you <strong>on track to meet your goals</strong> from the beginning of the course? Be specific: explain what the goal is and what you are doing in order to meet it.</em></li>
+<li><em>In what ways are you <strong>not on track to meet your goals</strong> from the beginning of the course? Be specific: explain what the goal is and what gap you see between where you are and your goal.</em></li>
+<li><em>If there’s any <strong>context</strong> you want to share about how you are faring relative to your goals, please do!</em></li>
+</ul>
+<section id="blog-posts" class="level3">
+<h3 class="anchored" data-anchor-id="blog-posts">Blog Posts</h3>
+<p>As of now, I’m currently working on three blog posts concurrently with one almost done and two nearing write up stage. On top of that I have two blog posts already submitted. All things considered, my goal of trying to complete every blog post was rather ambitious but I still want to keep it as a goal even if I don’t reach it in order to keep me motivated. One of the things I wish I did was work on my blog posts a bit over Spring Break but alas, the beach got to me unfortunately.</p>
+</section>
+<section id="course-presence-participation" class="level3">
+<h3 class="anchored" data-anchor-id="course-presence-participation">Course Presence (Participation)</h3>
+<p>Besides being sick a few days, I have went to class and completed the warm ups. While yes, theoretically I could have went back and did the warm ups for the classes I was sick for, I think this is a good benchmark of where I set out to be at the beginning of the semester.</p>
+<p>Looking forward, as the semester comes to a close, inevitably there will be deadlines and other projects that may take away from this, but I hope to not let that be the case and keep continuing onward.</p>
+</section>
+<section id="project" class="level3">
+<h3 class="anchored" data-anchor-id="project">Project</h3>
+<p>Well, since our project proposals were only due today, the stage of the project is still very early. That being said, I met with four individuals that seem to have a similar interest/idea to mine and I hope to work with them all in order to create something truly awesome!</p>
+<p>From talking with them, we all seem to recognize that the task will be hard and more unlike the work we have done currently in class but I believe that is part of the allure of the project. Hopefully by the end of the semester I can look back at our project and be proud of the model we created!</p>
+</section>
+<section id="other" class="level3">
+<h3 class="anchored" data-anchor-id="other">Other</h3>
+<p><em>Is there anything else that you want to share with me about what you have learned, how you have participated, or what you have achieved in CSCI 0451?</em></p>
+<p>I haven’t learned/had this much fun/struggled at times with a class in a pretty long time. I’m excited I was able to take it and look forward to developing my skills further!</p>
+</section>
+<section id="updating-your-goals" class="level3">
+<h3 class="anchored" data-anchor-id="updating-your-goals">Updating Your Goals</h3>
+<p>From your experience in CSCI 0451 and your other classes this semester, you may feel moved to make modifications to your goals. Are they still feasible? Too ambitious? Not ambitious enough? If you would like to revise any of your goals from your reflective goal-setting, you can do so below. For each goal you want to modify:</p>
+<ol type="1">
+<li>Clearly state what the goal was.</li>
+<li>Clearly state how you’ve done on that goal so far.</li>
+<li>Clearly state your proposed revised goal for the remainder of the course.</li>
+</ol>
+<p>I want to maintain goals that I had at the beginning of the semester. I feel as though it would be a disservice to my past self if I stopped pressing the go button. I want to learn as much as possible! I’ll keep trying to do so unless something drastic comes up.</p>
+</section>
+</section>
+<section id="grade-and-goals" class="level2">
+<h2 class="anchored" data-anchor-id="grade-and-goals">Grade and Goals</h2>
+<p><em>Take 15 minutes to look back on your responses in each of the sections above. Then, state the letter grade that you feel reflects your learning, participation, and achievement in CSCI 0451 <strong>so far</strong>, and contextualize it against some of the soundbytes below.</em></p>
+<section id="what-a-grade-sounds-like" class="level3">
+<h3 class="anchored" data-anchor-id="what-a-grade-sounds-like">What a Grade Sounds Like</h3>
+<p><em>An <strong>A</strong> sounds like:</em></p>
+<ul>
+<li><em>“I am very proud of my time in this course.”</em></li>
+<li><em>“I have grown significantly in multiple ways that matter to me.”</em></li>
+<li><em>“I am ready to take the theory, techniques, and ideas of this course into my future classes, projects, hobbies, or career.”</em></li>
+</ul>
+<p><em>A <strong>B</strong> sounds like:</em></p>
+<ul>
+<li><em>“I had some opportunities to learn more, overall I feel good about my time in this course.”</em></li>
+<li><em>“I am able to explain some new things or achieve new tasks.”</em></li>
+<li><em>“I can see a few ideas from this course that will be relevant for my future classes, projects, hobbies, or career.”</em></li>
+</ul>
+<p><em>A <strong>C</strong> sounds like:</em></p>
+<ul>
+<li><em>“I often made a good effort, but I missed many opportunities to get more out of my time in this course.”</em></li>
+<li><em>“I might be able to complete some new tasks related to the course content, but only with significant further guidance.”</em></li>
+<li><em>“I don’t see any ways to take the contents of this course into my future classes, projects, hobbies, or career.”</em></li>
+</ul>
+<p><em>You might find that some of these soundbytes resonate and other’s don’t! Take some time, see what feels right, and don’t be afraid to celebrate your achievements.</em></p>
+<blockquote class="blockquote">
+<p><strong>Upon reflection, I feel that my learning, participation, and achievement in CSCI 0451 (so far) are best reflected by a grade of</strong> A-</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>A way in which I resonate with the soundbytes for that grade above is…</strong></p>
+</blockquote>
+<p>I truly am proud of my time spent so far in the course. It’s been a lot of time and effort but I’m proud of myself for not burning out and staying excited. I have learned a lot so far, but more importantly was actively seeking additional information that was interesting to me. I often find myself just ‘doing’ class so I’m excited that I actually WANT to do extra and learn. Lastly, I’m hoping this project will teach me a lot about this area of computing and be something I can look back on proudly!</p>
 
 
+</section>
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1708979941276" data-listing-reading-time-sort="5" data-listing-word-count-sort="951">
-<div class="thumbnail">
-<p><a href="./posts/new-test-post/goal-setting.html" class="no-external"></a></p><a href="./posts/new-test-post/goal-setting.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/new-test-post/goal-setting.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/new-test-post/goal-setting.html" class="no-external">CSCI 0451: Reflective Goal-Setting</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/new-test-post/goal-setting.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/new-test-post/goal-setting.html" class="no-external">Donovan Wood</a>
-</div>
-</div>
-<div class="metadata">
-<p><a href="./posts/new-test-post/goal-setting.html" class="no-external"></a></p><a href="./posts/new-test-post/goal-setting.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1712030400000" data-listing-file-modified-sort="1714423590295" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1590">
-<div class="thumbnail">
-<p><a href="./posts/mid-course-reflection/mid-course.html" class="no-external"></a></p><a href="./posts/mid-course-reflection/mid-course.html" class="no-external">
-<p><img src="./posts/mid-course-reflection/reflection.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/mid-course-reflection/mid-course.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/mid-course-reflection/mid-course.html" class="no-external">Mid-Course Reflection</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/mid-course-reflection/mid-course.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/mid-course-reflection/mid-course.html" class="no-external">We reflect on our learning, engagement, and achievement in the first part of the semester. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/mid-course-reflection/mid-course.html" class="no-external">
-<div class="listing-date">
-Apr 2, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1710820800000" data-listing-file-modified-sort="1714423384352" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1069">
-<div class="thumbnail">
-<p><a href="./posts/health-blog-post/index.html" class="no-external"></a></p><a href="./posts/health-blog-post/index.html" class="no-external">
-<p><img src="./posts/health-blog-post/racialbias.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/health-blog-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/health-blog-post/index.html" class="no-external">Replication Study, Dissecting racial bias in an algorithm used to manage the health of populations</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/health-blog-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/health-blog-post/index.html" class="no-external">Replicating the results of the paper ‘Dissecting racial bias in an algorithm used to manage the health of populations’ by Obermeyer et al.&nbsp;(2019).</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/health-blog-post/index.html" class="no-external">
-<div class="listing-date">
-Mar 19, 2024
-</div>
-<div class="listing-author">
-Donovan Wood
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1710388800000" data-listing-file-modified-sort="1711937414472" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1668">
-<div class="thumbnail">
-<p><a href="./posts/WiDS-post/index.html" class="no-external"></a></p><a href="./posts/WiDS-post/index.html" class="no-external">
-<p><img src="./posts/WiDS-post/WiDS.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./posts/WiDS-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/WiDS-post/index.html" class="no-external">The Women in Data Science (WiDS) Conference at Middlebury College</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/WiDS-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/WiDS-post/index.html" class="no-external">Highlighting the Middlebury Women in Data Science Conference that took place on March 4th, 2024</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/WiDS-post/index.html" class="no-external">
-<div class="listing-date">
-Mar 14, 2024
-</div>
-<div class="listing-author">
-Donovan Wood
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1709096400000" data-listing-file-modified-sort="1712329760162" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="873">
-<div class="thumbnail">
-<p><a href="./posts/New-test-thing-post/index.html" class="no-external"></a></p><a href="./posts/New-test-thing-post/index.html" class="no-external">
-<p><img src="./posts/New-test-thing-post/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/New-test-thing-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/New-test-thing-post/index.html" class="no-external">Whose Costs?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/New-test-thing-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/New-test-thing-post/index.html" class="no-external">My second blog post, creating an automated decision system for a hypothetical bank extending credit</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/New-test-thing-post/index.html" class="no-external">
-<div class="listing-date">
-Feb 28, 2024
-</div>
-<div class="listing-author">
-Donovan Wood
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1709096400000" data-listing-file-modified-sort="1712013930326" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
-<div class="thumbnail">
-<p><a href="./posts/new-new-test-post/index.html" class="no-external"></a></p><a href="./posts/new-new-test-post/index.html" class="no-external">
-<p><img src="./posts/new-new-test-post/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/new-new-test-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/new-new-test-post/index.html" class="no-external">Whose Costs?</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/new-new-test-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/new-new-test-post/index.html" class="no-external">My second blog post, creating an automated decision system for a hypothetical bank extending credit</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/new-new-test-post/index.html" class="no-external">
-<div class="listing-date">
-Feb 28, 2024
-</div>
-<div class="listing-author">
-Donovan Wood
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-date-sort="1708318800000" data-listing-file-modified-sort="1714166172202" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1778">
-<div class="thumbnail">
-<p><a href="./posts/classifying-penguin-post/index.html" class="no-external"></a></p><a href="./posts/classifying-penguin-post/index.html" class="no-external">
-<p><img src="./posts/classifying-penguin-post/cody.png" class="thumbnail-image"></p>
-</a><p><a href="./posts/classifying-penguin-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/classifying-penguin-post/index.html" class="no-external">Classifying Palmer Penguins</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/classifying-penguin-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/classifying-penguin-post/index.html" class="no-external">My first blog post, detailing my model for classifying Palmer Penguins</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/classifying-penguin-post/index.html" class="no-external">
-<div class="listing-date">
-Feb 19, 2024
-</div>
-<div class="listing-author">
-Donovan Wood
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-date-sort="1678424400000" data-listing-file-modified-sort="1708120201125" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
-<div class="thumbnail">
-<p><a href="./posts/new-test-post/index.html" class="no-external"></a></p><a href="./posts/new-test-post/index.html" class="no-external">
-<p><img src="./posts/new-test-post/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/new-test-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/new-test-post/index.html" class="no-external">Warmup Exercise Penquin</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/new-test-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/new-test-post/index.html" class="no-external">A new blog post that I just made!</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/new-test-post/index.html" class="no-external">
-<div class="listing-date">
-Mar 10, 2023
-</div>
-<div class="listing-author">
-Phil Chodrow
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-date-sort="1673326800000" data-listing-file-modified-sort="1707962734253" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="441">
-<div class="thumbnail">
-<p><a href="./posts/example-blog-post/index.html" class="no-external"></a></p><a href="./posts/example-blog-post/index.html" class="no-external">
-<p><img src="./posts/example-blog-post/image.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/example-blog-post/index.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/example-blog-post/index.html" class="no-external">Hello Blog</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/example-blog-post/index.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/example-blog-post/index.html" class="no-external">An example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/example-blog-post/index.html" class="no-external">
-<div class="listing-date">
-Jan 10, 2023
-</div>
-<div class="listing-author">
-Phil Chodrow
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -293,40 +293,48 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-line-risk-score</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Figures of the mean number of active chronic conditions for each percentile of risk score, by gender and race</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, gender <span class="kw">in</span> <span class="bu">enumerate</span>(genders):</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> race <span class="kw">in</span> races:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        subset <span class="op">=</span> df[(df[<span class="st">'gender'</span>] <span class="op">==</span> gender) <span class="op">&amp;</span> (df[<span class="st">'race'</span>] <span class="op">==</span> race)]</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if subset is empty</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> subset.empty:</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"No data for </span><span class="sc">{</span>gender<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>race<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<div id="cell-fig-line-risk-score" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">2</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>), sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, gender <span class="kw">in</span> <span class="bu">enumerate</span>(genders):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> race <span class="kw">in</span> races:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        subset <span class="op">=</span> df[(df[<span class="st">'gender'</span>] <span class="op">==</span> gender) <span class="op">&amp;</span> (df[<span class="st">'race'</span>] <span class="op">==</span> race)]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check if subset is empty</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> subset.empty:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"No data for </span><span class="sc">{</span>gender<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span>race<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate percentiles of risk score</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        percentiles <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">101</span>)  <span class="co"># 101 points from 0 to 100</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        percentile_scores <span class="op">=</span> np.percentile(subset[<span class="st">'risk_score_t'</span>], percentiles)</span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate percentiles of risk score</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        percentiles <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">101</span>)  <span class="co"># 101 points from 0 to 100</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        percentile_scores <span class="op">=</span> np.percentile(subset[<span class="st">'risk_score_t'</span>], percentiles)</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate mean number of chronic conditions for each percentile</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        mean_conditions <span class="op">=</span> [subset[subset[<span class="st">'risk_score_t'</span>] <span class="op">&lt;=</span> score][<span class="st">'gagne_sum_t'</span>].mean() <span class="cf">for</span> score <span class="kw">in</span> percentile_scores]</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calculate mean number of chronic conditions for each percentile</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        mean_conditions <span class="op">=</span> [subset[subset[<span class="st">'risk_score_t'</span>] <span class="op">&lt;=</span> score][<span class="st">'gagne_sum_t'</span>].mean() <span class="cf">for</span> score <span class="kw">in</span> percentile_scores]</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>        ax <span class="op">=</span> axes[i]</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>        ax.plot(percentiles, mean_conditions, label<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>race<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        ax <span class="op">=</span> axes[i]</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        ax.plot(percentiles, mean_conditions, label<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>race<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">'</span>)</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'</span><span class="sc">{</span>gender<span class="sc">}</span><span class="ss"> Patients'</span>)</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Percentile of Risk Score'</span>)</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Mean Number of Active Chronic Conditions'</span>)</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Race'</span>)</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f'</span><span class="sc">{</span>gender<span class="sc">}</span><span class="ss"> Patients'</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'Percentile of Risk Score'</span>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'Mean Number of Active Chronic Conditions'</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        ax.legend(title<span class="op">=</span><span class="st">'Race'</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-line-risk-score" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-line-risk-score-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-line-risk-score-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-line-risk-score-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Figures of the mean number of active chronic conditions for each percentile of risk score, by gender and race
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 <p>Algorithm scores are a key input to decisions about future enrollment in a care coordination program. So as we might expect, with less-healthy Blacks scored at similar risk scores to more-healthy Whites, we find evidence of substantial disparities in program screening.</p>
 <p>Say for example that Patient A is Black, Patient B is White, and that both Patient A and Patient B have exactly the same chronic illnesses. Due to the disparity seen above, Patient A is less likely to be referred to the high risk care management program due to the current risk score screening practices.</p>
@@ -334,7 +342,7 @@ Name: count, dtype: int64</code></pre>
 <section id="part-c-reproducing-fig-3." class="level2">
 <h2 class="anchored" data-anchor-id="part-c-reproducing-fig-3.">Part C: Reproducing Fig 3.</h2>
 <p>In this section, we will be focusing on reproducing Figure 3 from Obermeyer et al.&nbsp;(2019).</p>
-<div id="cell-fig-scatter-expenditure" class="cell" data-execution_count="23">
+<div id="cell-fig-scatter-expenditure" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">18</span>, <span class="dv">6</span>))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Mean Medical Expenditure by Percentile of Risk Score</span></span>
@@ -369,20 +377,20 @@ Name: count, dtype: int64</code></pre>
 <img src="index_files/figure-html/fig-scatter-expenditure-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-expenditure-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Scatterplots of mean medical expenditure by percentile of risk score and number of chronic illnesses
+Figure&nbsp;2: Scatterplots of mean medical expenditure by percentile of risk score and number of chronic illnesses
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>From reproducing <code>Figure 3</code>, we find that there are small disparities in cost between races, but rather large disparities in health conditional on risk as seen in <strong>?@fig-line-risk-score</strong></p>
+<p>From reproducing <code>Figure 3</code>, we find that there are small disparities in cost between races, but rather large disparities in health conditional on risk as seen in <a href="#fig-line-risk-score" class="quarto-xref">Figure&nbsp;1</a></p>
 <section id="part-d-modeling-cost-disparity" class="level3">
 <h3 class="anchored" data-anchor-id="part-d-modeling-cost-disparity">Part D: Modeling Cost Disparity</h3>
 </section>
 </section>
 <section id="data-prep" class="level2">
 <h2 class="anchored" data-anchor-id="data-prep">Data Prep</h2>
-<p>As seen in <a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;1</a>, there is a relatively stable pattern of disparity in the cost incurred by black and white patients with 5 or fewer chronic conditions, but this pattern begins to swing wildly in one direction or another as the number of active chronic conditions increases.</p>
+<p>As seen in <a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;2</a>, there is a relatively stable pattern of disparity in the cost incurred by black and white patients with 5 or fewer chronic conditions, but this pattern begins to swing wildly in one direction or another as the number of active chronic conditions increases.</p>
 <p>Due to this, we will focus on patients with 5 or fewer active chronic conditions.</p>
 <p>We will explore the percentage of patients in the dataset with 5 or fewer active chronic conditions, create a new column in the data set called <code>log-transform</code> which will act as our target variable for our model, create a dummy column for the qualitative <code>race</code> variable, and separate the data into predictor variables <code>X</code> and target variable <code>y</code>.</p>
 <div id="cell-13" class="cell" data-execution_count="27">
@@ -450,17 +458,24 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> cross_val_score(pipeline, X_poly, y, cv<span class="op">=</span><span class="dv">5</span>, scoring<span class="op">=</span><span class="st">'neg_mean_squared_error'</span>)</span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    scores.append(np.mean(score))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-line-degree</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: Line plot of cross-validated mean squared error for different polynomial degrees</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the scores to find the best degree</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, max_degree <span class="op">+</span> <span class="dv">1</span>), scores, marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Degree of polynomial'</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cross-validated MSE'</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model performance for different polynomial degrees'</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-line-degree" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, max_degree <span class="op">+</span> <span class="dv">1</span>), scores, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Degree of polynomial'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Cross-validated MSE'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Model performance for different polynomial degrees'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-line-degree" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-line-degree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-line-degree-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-line-degree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Line plot of cross-validated mean squared error for different polynomial degrees
+</figcaption>
+</figure>
+</div>
+</div>
 </div>
 <div id="cell-19" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -482,14 +497,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>cost_ratio <span class="op">=</span> np.exp(w_b)</span>
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated cost incurred by Black patients as a percentage of white patients: </span><span class="sc">{</span>cost_ratio <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;1</a> suggests that the relationship between the number of chronic conditions and the cost of care might be nonlinear. Due to this, we are going to fit a linear regression model with polynomial features in the number of active chronic conditions in order to to account for the nonlinearity.</p>
+<p><a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;2</a> suggests that the relationship between the number of chronic conditions and the cost of care might be nonlinear. Due to this, we are going to fit a linear regression model with polynomial features in the number of active chronic conditions in order to to account for the nonlinearity.</p>
 <p>THe model we use above is mathematically described as:</p>
 <span class="math display">\[\begin{aligned}
   \log \mathrm{cost} \approx w_b \times (\text{patient is Black}) + \mathrm{intercept} + \sum_{i = 1}^k w_k\times (\text{gagne sum})^k\;.
 \end{aligned}\]</span>
 <p>In the model above, one particular feature of interest is the value of the coefficient w_b. In the context of a log-transformed linear model, w_b has the following interpretation: the number e^{w_b} is an estimate of the percentage of cost incurred by a Black patient in comparison to an equally sick white patient.</p>
-<p><strong>?@fig-line-degree</strong> is used to explore the relationship between the number of chronic conditions and the cost of care. We find through this that a degree of 8 is the best fit for the model.</p>
-<p>The estimate we receive suggests that Black patients incur about 96.92% of the costs incurred by white patients, given the same number of chronic conditions and assuming other factors are equal. This value is less than 100%, indicating that, per the model’s findings, Black patients have slightly lower medical expenditures compared to white patients for comparable levels of illness. This supports the evidence from <a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;1</a>, which shows that the disparity in cost between black and white patients is relatively stable for patients with 5 or fewer active chronic conditions. Meaning that we do indeed see a disparity in risk scores, but only a slight disparity in cost between black and white patients.</p>
+<p><a href="#fig-line-degree" class="quarto-xref">Figure&nbsp;3</a> is used to explore the relationship between the number of chronic conditions and the cost of care. We find through this that a degree of 8 is the best fit for the model.</p>
+<p>The estimate we receive suggests that Black patients incur about 96.92% of the costs incurred by white patients, given the same number of chronic conditions and assuming other factors are equal. This value is less than 100%, indicating that, per the model’s findings, Black patients have slightly lower medical expenditures compared to white patients for comparable levels of illness. This supports the evidence from <a href="#fig-scatter-expenditure" class="quarto-xref">Figure&nbsp;2</a>, which shows that the disparity in cost between black and white patients is relatively stable for patients with 5 or fewer active chronic conditions. Meaning that we do indeed see a disparity in risk scores, but only a slight disparity in cost between black and white patients.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
