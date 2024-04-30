@@ -475,7 +475,7 @@ Figure&nbsp;3: Line plot of cross-validated mean squared error for different pol
 </div>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="11">
+<div id="cell-21" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>best_degree <span class="op">=</span> np.argmax(scores) <span class="op">+</span> <span class="dv">1</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Best polynomial degree:"</span>, best_degree)</span>
@@ -492,7 +492,8 @@ Figure&nbsp;3: Line plot of cross-validated mean squared error for different pol
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the coefficient for the race variable and compute e^w_b</span></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>w_b <span class="op">=</span> model.named_steps[<span class="st">'linear'</span>].coef_[<span class="dv">1</span>]</span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>cost_ratio <span class="op">=</span> np.exp(w_b)</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated cost incurred by Black patients as a percentage of white patients: </span><span class="sc">{</span>cost_ratio <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated cost incurred by Black patients as a percentage of white patients: </span><span class="sc">{</span>cost_ratio <span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Best polynomial degree: 8
 Estimated cost incurred by Black patients as a percentage of white patients: 96.92%</code></pre>
