@@ -226,7 +226,7 @@ background-size: cover;
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
 <p>In this blog post we use a logistic regression model in order to classify Palmer penguins according to their <code>Species</code>. We find that using information such as the <code>Island</code> of the penguin as well as <code>Culmen Depth (mm)</code> and <code>Culmen Length</code> are sufficient features in order to provide an accurate classifying model. Within this blog post, we examine multiple data visualizations and tables in order to better understand the data and develop our reasoning for choosing the features of the model.</p>
 <p>Below we will import the dataset we will use for this Blog Post</p>
-<div id="cell-4" class="cell" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>train_url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/PhilChodrow/ml-notes/main/data/palmer-penguins/train.csv"</span></span>
@@ -238,7 +238,7 @@ background-size: cover;
 <p>In order to prepare the qualitative columns in the data, we must convert categorical feature columns like <code>Sex</code> and <code>Island</code> into 0-1 columns using <code>pd.get_dummies</code> function.</p>
 <p>The label column <code>Species</code> will also needed to be coded differently, using a <code>LabelEncoder</code></p>
 <p>The following function will take care of these processes:</p>
-<div id="cell-6" class="cell" data-execution_count="3">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> LabelEncoder</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>le <span class="op">=</span> LabelEncoder()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>le.fit(train[<span class="st">"Species"</span>])</span>
@@ -261,26 +261,37 @@ background-size: cover;
 <section id="visualizations-of-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="visualizations-of-the-data">Visualizations of the Data</h2>
 <p>For the dataset, I created two plots and one summary table in order to contextualize the data.</p>
-<div id="cell-8" class="cell" data-execution_count="10">
+<div id="cell-8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-scatter-island" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(train, x <span class="op">=</span> <span class="st">"Island"</span>, y <span class="op">=</span> <span class="st">"Species"</span>, hue <span class="op">=</span> <span class="st">"Species"</span>, style <span class="op">=</span> <span class="st">"Species"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-count-island" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar plot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sns.countplot(data<span class="op">=</span>train, x<span class="op">=</span><span class="st">'Island'</span>, hue<span class="op">=</span><span class="st">'Species'</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize the plot</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Island Distribution for Each Penguin Species'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Island'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Count'</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Species'</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-scatter-island" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-count-island" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-scatter-island-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="index_files/figure-html/fig-scatter-island-output-1.png" class="img-fluid figure-img">
+<div aria-describedby="fig-count-island-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-count-island-output-1.png" class="img-fluid figure-img">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-island-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-count-island-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Island Distribution for Each Penguin Species
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>After running through a multitude of different plots with varying sets of data, one combination that particularly stood out to me is shown in <a href="#fig-scatter-island" class="quarto-xref">Figure&nbsp;1</a>. The plot shows the distribution of each species of Penguin on the three islands within the dataset. Now while it seems rather plain and simple at first glance, take note that for one of these islands (Torgersen), only one species of penguins resides there, that being Adeilie. Upon further investigation, for the remaining two islands, at most, only two differing penguin species reside there. Adelie inhabit all three islands while Chinstrap penguins reside only on the Dream island and Gentoo Penguins are only found on the Biscoe Island.</p>
+<p>After running through a multitude of different plots with varying sets of data, one combination that particularly stood out to me is shown in <a href="#fig-count-island" class="quarto-xref">Figure&nbsp;1</a>. The plot shows the distribution of each species of Penguin on the three islands within the dataset. Now while it seems rather plain and simple at first glance, take note that for one of these islands (Torgersen), only one species of penguins resides there, that being Adeilie. Upon further investigation, for the remaining two islands, at most, only two differing penguin species reside there. Adelie inhabit all three islands while Chinstrap penguins reside only on the Dream island and Gentoo Penguins are only found on the Biscoe Island.</p>
 <p>The reason as to why this rather simple analysis is so interesting as it presents a way in which we no longer have to compare all three species against one another at a given point. Rather, we can now determine whether the penguin presented to us is one of two species if the island is Dream or Biscoe. In the case of Torgersen, we automatically know the penguin will be Adelie as they are the only species of Penguins that reside there!</p>
 <p>This knowledge, paired with two more quantitative features, should allow the model to classify a penguin more accurately!</p>
 <div id="cell-fig-scatterplot-culmen" class="cell" data-fig-capt="Distribution of Culmen Depth vs Length for Each Penguin Species" data-execution_count="9">
@@ -299,10 +310,10 @@ Figure&nbsp;2
 </div>
 </div>
 <p>With that idea now set. Let’s move on to the second visualization, shown by <a href="#fig-scatterplot-culmen" class="quarto-xref">Figure&nbsp;2</a>. This is a more traditional scatterplot showing the distributions of <code>Culmen_Depth</code> and <code>Culmen_Length</code> for all three species of penguin.</p>
-<p>Now recalling <a href="#fig-scatter-island" class="quarto-xref">Figure&nbsp;1</a>, the main relationships we want to focus on are <strong>Chinstrap vs Adelie</strong> and <strong>Gentoo vs Adelie</strong> as these are the only relationships where penguins coexist on the same island.</p>
+<p>Now recalling <strong>?@fig-scatter-island</strong>, the main relationships we want to focus on are <strong>Chinstrap vs Adelie</strong> and <strong>Gentoo vs Adelie</strong> as these are the only relationships where penguins coexist on the same island.</p>
 <p>As we can see from the <a href="#fig-scatterplot-culmen" class="quarto-xref">Figure&nbsp;2</a>. Gentoo penguins seem to exhbit a longer culmen length but shorter culmen depth. <br> Adelie penguins have a shorter culmen length compared to Gentoo penguins but a higher culmen depth. <br> Chinstrap penguins appear to have the longest average combination of culmen depth/length out of all the penguins.</p>
 <p>Referring back to those relationships as mentioned previously, Gentoo and Adelie penguins seem to have a clear divide amongst one another in terms of culmen length/depth. Chinstrap and Adelie penguins seem to overlap at some points in the graph but fairly slightly.</p>
-<p>All things considered, given the properties of both <a href="#fig-scatter-island" class="quarto-xref">Figure&nbsp;1</a> and <a href="#fig-scatterplot-culmen" class="quarto-xref">Figure&nbsp;2</a>, the combination of these three features will be useful as a starting reference for my model.</p>
+<p>All things considered, given the properties of both <strong>?@fig-scatter-island</strong> and <a href="#fig-scatterplot-culmen" class="quarto-xref">Figure&nbsp;2</a>, the combination of these three features will be useful as a starting reference for my model.</p>
 <div id="cell-13" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Summary table for the mean body mass of each species of penguin by sex</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
