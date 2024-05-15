@@ -53,7 +53,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "CSCI 0451: Reflective Goal-Setting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImplementing the Perceptron Algorithm\n\n\n\n\n\nA simple implementation of the Perceptron Algorithm in Python.\n\n\n\n\n\nApr 2, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nMid-Course Reflection\n\n\n\n\n\nWe reflect on our learning, engagement, and achievement in the first part of the semester. \n\n\n\n\n\nApr 2, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nLimits of the Quantitative Approach to Bias and Fairness\n\n\n\n\n\nMy Blog Post Discussing the Limits of the Quantitative Approach to Bias and Fairness in Machine Learning.\n\n\n\n\n\nMar 27, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nReplication Study, Dissecting racial bias in an algorithm used to manage the health of populations\n\n\n\n\n\nReplicating the results of the paper ‘Dissecting racial bias in an algorithm used to manage the health of populations’ by Obermeyer et al. (2019).\n\n\n\n\n\nMar 19, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nThe Women in Data Science (WiDS) Conference at Middlebury College\n\n\n\n\n\nHighlighting the Middlebury Women in Data Science Conference that took place on March 4th, 2024\n\n\n\n\n\nMar 14, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWhose Costs?\n\n\n\n\n\nMy second blog post, creating an automated decision system for a hypothetical bank extending credit\n\n\n\n\n\nFeb 28, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWhose Costs?\n\n\n\n\n\nMy second blog post, creating an automated decision system for a hypothetical bank extending credit\n\n\n\n\n\nFeb 28, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nClassifying Palmer Penguins\n\n\n\n\n\nMy first blog post, detailing my model for classifying Palmer Penguins\n\n\n\n\n\nFeb 19, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWarmup Exercise Penquin\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "CSCI 0451: Reflective Goal-Setting\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImplementing Logistic Regression\n\n\n\n\n\nThis Blog Post will cover the implementation of logistic regression in Python.\n\n\n\n\n\nMay 12, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nImplementing the Perceptron Algorithm\n\n\n\n\n\nA simple implementation of the Perceptron Algorithm in Python.\n\n\n\n\n\nApr 2, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nMid-Course Reflection\n\n\n\n\n\nWe reflect on our learning, engagement, and achievement in the first part of the semester. \n\n\n\n\n\nApr 2, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nLimits of the Quantitative Approach to Bias and Fairness\n\n\n\n\n\nMy Blog Post Discussing the Limits of the Quantitative Approach to Bias and Fairness in Machine Learning.\n\n\n\n\n\nMar 27, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nReplication Study, Dissecting racial bias in an algorithm used to manage the health of populations\n\n\n\n\n\nReplicating the results of the paper ‘Dissecting racial bias in an algorithm used to manage the health of populations’ by Obermeyer et al. (2019).\n\n\n\n\n\nMar 19, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nThe Women in Data Science (WiDS) Conference at Middlebury College\n\n\n\n\n\nHighlighting the Middlebury Women in Data Science Conference that took place on March 4th, 2024\n\n\n\n\n\nMar 14, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWhose Costs?\n\n\n\n\n\nMy second blog post, creating an automated decision system for a hypothetical bank extending credit\n\n\n\n\n\nFeb 28, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWhose Costs?\n\n\n\n\n\nMy second blog post, creating an automated decision system for a hypothetical bank extending credit\n\n\n\n\n\nFeb 28, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nClassifying Palmer Penguins\n\n\n\n\n\nMy first blog post, detailing my model for classifying Palmer Penguins\n\n\n\n\n\nFeb 19, 2024\n\n\nDonovan Wood\n\n\n\n\n\n\n\n\n\n\n\n\nWarmup Exercise Penquin\n\n\n\n\n\nA new blog post that I just made!\n\n\n\n\n\nMar 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\n\n\n\n\n\n\nHello Blog\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/New-test-thing-post/index.html",
@@ -614,5 +614,40 @@
     "title": "Implementing the Perceptron Algorithm",
     "section": "Conclusion",
     "text": "Conclusion\nIn this blog post, I have implemented the Perceptron algorithm from scratch and tested it on a synthetic dataset. I have also implemented the MiniBatch Perceptron algorithm and tested it on different datasets. I have shown that the Perceptron algorithm can learn a decision boundary that separates the data points into two classes, and that the MiniBatch Perceptron algorithm can converge faster than the Perceptron algorithm by updating the weights and bias term based on a mini-batch of data points in each iteration. I have also discussed the runtime implications of the Perceptron and MiniBatch Perceptron algorithms, and shown that the time complexity of the opt.step() function is Linear for the normal Perceptron algorithm and \\(O(k \\cdot p)\\) for the MiniBatch algorithm. Overall, the Perceptron and MiniBatch Perceptron algorithms are simple and efficient algorithms for binary classification tasks, and can be extended to handle data with more than two dimensions. It was great to be able to implement a simple machine learning algorithm from scratch and experiment with it on different datasets. I hope you enjoyed reading this blog post and learned something new about the Perceptron and MiniBatch Perceptron algorithms. Thank you for reading!"
+  },
+  {
+    "objectID": "posts/logistic-regression-post/index.html",
+    "href": "posts/logistic-regression-post/index.html",
+    "title": "Implementing Logistic Regression",
+    "section": "",
+    "text": "%load_ext autoreload\n%autoreload 2\nfrom logistic import LogisticRegression, GradientDescentOptimizer"
+  },
+  {
+    "objectID": "posts/logistic-regression-post/index.html#abstract",
+    "href": "posts/logistic-regression-post/index.html#abstract",
+    "title": "Implementing Logistic Regression",
+    "section": "Abstract:",
+    "text": "Abstract:\nIn this Blog Post, we implement logistic regression. We will run three experiments to understand the working of logistic regression. In the first experiment, we will implement logistic regression using vanilla gradient descent. In the second experiment, we will implement logistic regression using gradient descent with momentum. In the third experiment, we will examine the issues of overfitting. We find that when \\(\\beta\\) is higher (momentum), the model converges faster. We also find that the model overfits when the the number of features is larger than the normal of observations\nIn this blog post we will:\n\nImplement gradient descent for logistic regression in an object-oriented paradigm.\nImplement a key variant of gradient descent with momentum in order to achieve faster convergence.\nPerform experiments to test our implementations."
+  },
+  {
+    "objectID": "posts/logistic-regression-post/index.html#part-a-implement-logistic-regression",
+    "href": "posts/logistic-regression-post/index.html#part-a-implement-logistic-regression",
+    "title": "Implementing Logistic Regression",
+    "section": "Part A: Implement Logistic Regression",
+    "text": "Part A: Implement Logistic Regression\nTo view my implementation of logistic regression, please refer to logistic.py"
+  },
+  {
+    "objectID": "posts/logistic-regression-post/index.html#part-b-experiments",
+    "href": "posts/logistic-regression-post/index.html#part-b-experiments",
+    "title": "Implementing Logistic Regression",
+    "section": "Part B: Experiments",
+    "text": "Part B: Experiments"
+  },
+  {
+    "objectID": "posts/logistic-regression-post/index.html#conclusion",
+    "href": "posts/logistic-regression-post/index.html#conclusion",
+    "title": "Implementing Logistic Regression",
+    "section": "Conclusion",
+    "text": "Conclusion\nIn this blog post, we implemented logistic regression in an object-oriented paradigm and tested our implementation with various experiments. We trained a logistic regression model using vanilla gradient descent and gradient descent with momentum. We also explored the concept of overfitting by generating data where the number of features is greater than the number of data points. Through these experiments, I gained a better understanding of logistic regression and gradient descent optimization techniques."
   }
 ]
