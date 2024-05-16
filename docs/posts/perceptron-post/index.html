@@ -250,7 +250,7 @@ window.Quarto = {
 <p>In the following sections, I will implement the Perceptron algorithm in Python and test it on a synthetic dataset. I will also visualize the decision boundary learned by the Perceptron algorithm to see how well it separates the data points into two classes.</p>
 <p>Let’s get started by implementing the Perceptron algorithm in Python.</p>
 <p>This is done in <a href="./perceptron.py">perceptron.py</a> file. I will not cover the entirety of the coding file, but will touch on the <code>perceptron.grad()</code> portion of the code:</p>
-<div id="cell-3" class="cell">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grad() function from perceptron.py</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> grad(<span class="va">self</span>, X, y):</span>
@@ -265,7 +265,7 @@ window.Quarto = {
 <p><span class="math inline">\([s_i y_i &lt; 0] y_i \mathbf{x}_i\)</span></p>
 <p>With that said, let’s begin testing our implementation</p>
 <p>In order to test the implementation, I will run the “minimal training loop”. We need some data to first test this on, so below we will implement some testing data.</p>
-<div id="cell-5" class="cell" data-execution_count="8">
+<div id="cell-5" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext autoreload</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> perceptron <span class="im">import</span> Perceptron, PerceptronOptimizer</span>
@@ -313,7 +313,7 @@ window.Quarto = {
 </div>
 </div>
 <p>With our data generated, we can now test the Perceptron algorithm by running the minimal training loop. From what we have seen so far, there is a clear separation between the two classes, so the Perceptron algorithm should be able to learn a decision boundary that separates the data points into two classes. Let’s run the minimal training loop and visualize the decision boundary learned by the Perceptron algorithm.</p>
-<div id="cell-7" class="cell" data-execution_count="27">
+<div id="cell-7" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">1234567</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -336,7 +336,7 @@ window.Quarto = {
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    opt.step(X_ls, y_ls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can track the progress of our training by checking the values of the loss function over time:</p>
-<div id="cell-fig-line-pep-loss" class="cell" data-execution_count="28">
+<div id="cell-fig-line-pep-loss" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.plot(loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.scatter(torch.arange(<span class="bu">len</span>(loss_vec)), loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>labs <span class="op">=</span> plt.gca().<span class="bu">set</span>(xlabel <span class="op">=</span> <span class="st">"Perceptron Iteration (Updates Only)"</span>, ylabel <span class="op">=</span> <span class="st">"loss"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -363,7 +363,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <h1>Part 1B: Using Linearly Separable Data</h1>
 <p>As seen with <a href="#fig-line-pep-loss" class="quarto-xref">Figure&nbsp;1</a>, the perceptron algorithm converges to a solution with zero loss after 49 iterations. For 43 of the 49 iterations, the loss did not change, meaning that the randomly selected point was correctly classified by the model at that iteration.</p>
 <p>Using the figure below created by Professor Chondrow of Middlebury College, we can see that the perceptron algorithm is able to learn a decision boundary that separates the data points into two classes.</p>
-<div id="cell-13" class="cell" data-execution_count="29">
+<div id="cell-13" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define line function</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> draw_line(w, x_min, x_max, ax, <span class="op">**</span>kwargs):</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    w_ <span class="op">=</span> w.flatten()</span>
@@ -428,7 +428,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <p>When the data is not linearly separable, the perceptron algorithm will not settle on a final value of <code>w</code>, but will instead run until the maximum number of iterations is reached, without achieving perfect accuracy.</p>
 <p>In this section we will visualize the decision boundary learned by the Perceptron algorithm on non-linearly separable data. We will generate a synthetic dataset that is not linearly separable, and then run the Perceptron algorithm on the dataset to see how well it separates the data points into two classes. To ensure that the algorithm terminates in a reasonable amount of time, we will set a maximum number of iterations.</p>
 <p>In order to create our non-linearly separable data, we will use the same method to generate our linearly separable data, but we will add some noise to the data points. This will make it more difficult for the Perceptron algorithm to learn a decision boundary that separates the data points into two classes.</p>
-<div id="cell-16" class="cell" data-execution_count="31">
+<div id="cell-16" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">2409</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -449,7 +449,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </div>
 <p>With adding noise we can see that the classes are no longer linearly separable. This means that the Perceptron algorithm will not be able to find a decision boundary that perfectly separates the data points into two classes. Instead, the algorithm will run until the maximum number of iterations is reached, without achieving perfect accuracy.</p>
 <p>Let’s try to fit this data using the Perceptron algorithm and visualize the decision boundary learned by the algorithm. We will set a maximum number of iterations to ensure that the algorithm terminates in a reasonable amount of time.</p>
-<div id="cell-18" class="cell" data-execution_count="33">
+<div id="cell-18" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">1234567</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># instantiate a model and an optimizer</span></span>
@@ -481,7 +481,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This is the same code as before, just with the addition of a maximum iteration count. Let’s visualize the change in loss over the iterations:</p>
-<div id="cell-20" class="cell" data-execution_count="34">
+<div id="cell-20" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the changes in loss </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.plot(loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(torch.arange(<span class="bu">len</span>(loss_vec)), loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
@@ -497,7 +497,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </div>
 <p>As expected, due to the noise in the data, the Perceptron algorithm does not converge to a solution with zero loss. Instead, the algorithm runs until the maximum number of iterations is reached, without achieving perfect accuracy. The decision boundary learned by the Perceptron algorithm is not able to perfectly separate the data points into two classes, but it does a reasonable job of separating the data points.</p>
 <p>Due to the sheer amount of changes in weights, we will look at the final decision boundary created by the Perceptron algorithm on this data set.</p>
-<div id="cell-22" class="cell" data-execution_count="35">
+<div id="cell-22" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot final decision boundary</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plot_perceptron_data(X_nls, y_nls, ax)</span>
@@ -516,7 +516,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <section id="part-3b-more-than-2-dimensions" class="level1">
 <h1>Part 3B: More Than 2 Dimensions!</h1>
 <p>We have seen the model trained on 2-dimensional data. However, the Perceptron algorithm can be extended to handle data with more than two dimensions. In this section, we will generate a synthetic dataset with five dimensions, and then run the Perceptron algorithm on the dataset to see how well it separates the data points into two classes.</p>
-<div id="cell-25" class="cell" data-execution_count="36">
+<div id="cell-25" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">1234</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -550,7 +550,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We cannot visualize the decision boundary in five dimensions, but we can still test the Perceptron algorithm on the dataset and see how well it performs. Let’s inspect the changes to our loss function over time using the same plot we used before:</p>
-<div id="cell-27" class="cell" data-execution_count="37">
+<div id="cell-27" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the changes in loss </span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.plot(loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(torch.arange(<span class="bu">len</span>(loss_vec)), loss_vec, color <span class="op">=</span> <span class="st">"slategrey"</span>)</span>
@@ -580,7 +580,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <p>The <span class="math inline">\(k\)</span> paramater represents the number of data points to sample in each iteration, while the <span class="math inline">\(\alpha\)</span> parameter represents the learning rate of the algorithm. The learning rate controls how much the weights and bias term are updated in each iteration. A higher learning rate will result in larger updates to the weights and bias term, while a lower learning rate will result in smaller updates.</p>
 <p>We will perform 3 experiments, <code>C1</code>, <code>C2</code>, and <code>C3</code> to test the MiniBatch Perceptron algorithm on different datasets.</p>
 <p>Let’s begin by defining the experiment code for all of the experiments:</p>
-<div id="cell-30" class="cell" data-execution_count="45">
+<div id="cell-30" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> minibatch_perceptron <span class="im">import</span> MiniBatchPerceptron, MiniBatchPerceptronOptimizer</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> experiment(X, y, k, alpha):  </span>
@@ -654,8 +654,8 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </section>
 <section id="experiment-c1-k-1" class="level1">
 <h1>Experiment C1: <span class="math inline">\(k\)</span> = 1</h1>
-<p>To show the difference between the Perceptron and MiniBatch Perceptron algorithms, we will first test the MiniBatch Perceptron algorithm with <span class="math inline">\(k=1\)</span> and <span class="math inline">\(\alpha=1\)</span>. This means that the MiniBatch Perceptron algorithm will update the weights and bias term based on a single data point in each iteration, which is equivalent to the Perceptron algorithm.</p>
-<div id="cell-32" class="cell" data-execution_count="42">
+<p>To show the difference between the Perceptron and MiniBatch Perceptron algorithms, we will first test the MiniBatch Perceptron algorithm with <span class="math inline">\(k=1\)</span> and <span class="math inline">\(\alpha=1\)</span>. This means that the MiniBatch Perceptron algorithm will update the weights and bias term based on a single data point in each iteration, which is equivalent to the Perceptron algorithm. Note that the MiniBatch Perceptron will be the same as the Perceptron algorithm when <span class="math inline">\(k=1\)</span>, we just want to show this.</p>
+<div id="cell-32" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit models</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>loss_vec, mb_loss_vec, p_w, mb_p_w <span class="op">=</span> experiment(X <span class="op">=</span> X_ls, y <span class="op">=</span> y_ls, k <span class="op">=</span> <span class="dv">1</span>, alpha <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -686,7 +686,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <section id="part-c2-k-10" class="level1">
 <h1>Part C2: <span class="math inline">\(k\)</span> = 10</h1>
 <p>In this experiment we will test the MiniBatch Perceptron algorithm with <span class="math inline">\(k=10\)</span> and <span class="math inline">\(\alpha=1\)</span>. This means that the MiniBatch Perceptron algorithm will update the weights and bias term based on a mini-batch of 10 data points in each iteration. This can lead to faster convergence and better generalization performance, especially when the training data is large. Let’s see:</p>
-<div id="cell-35" class="cell" data-execution_count="46">
+<div id="cell-35" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit models</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>loss_vec, mb_loss_vec, p_w, mb_p_w <span class="op">=</span> experiment(X <span class="op">=</span> X_ls, y <span class="op">=</span> y_ls, k <span class="op">=</span> <span class="dv">10</span>, alpha <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -715,8 +715,8 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </section>
 <section id="part-c3-k-n" class="level1">
 <h1>Part C3: <span class="math inline">\(k\)</span> = n</h1>
-<p>In this experiment we will test the MiniBatch Perceptron algorithm with <span class="math inline">\(k=n\)</span> meaning that the batch size is the size of the entire dataset. We can want to show that the MiniBatch Perceptron algorithm can converge even when the data is not linearly separable. Let’s see:</p>
-<div id="cell-38" class="cell" data-execution_count="47">
+<p>In this experiment we will test the MiniBatch Perceptron algorithm with <span class="math inline">\(k=n\)</span> meaning that the batch size is the size of the entire dataset. We can want to show that the MiniBatch Perceptron algorithm can converge even when the data is not linearly separable. Note: For this test we will also decrease our <span class="math inline">\(\alpha\)</span> to see a more visual change. Let’s see:</p>
+<div id="cell-38" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit models</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>loss_vec, mb_loss_vec, p_w, mb_p_w <span class="op">=</span> experiment(X <span class="op">=</span> X_nls, y <span class="op">=</span> y_nls, k <span class="op">=</span> <span class="dv">50</span>, alpha <span class="op">=</span> <span class="dv">1</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -742,10 +742,10 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </div>
 </div>
 <p>Hm, we see that when our <span class="math inline">\(\alpha\)</span> is set to 1, the MiniBatch Perceptron algorithm does not converge to a solution with zero loss. This is because the data is not linearly separable, and the MiniBatch Perceptron algorithm is not able to find a decision boundary that perfectly separates the data points into two classes.</p>
-<p>However, when we set <span class="math inline">\(\alpha\)</span> to 0.1, the MiniBatch Perceptron algorithm should perform a bit better. Let’s see:</p>
-<div id="cell-40" class="cell" data-execution_count="48">
+<p>However, when we set <span class="math inline">\(\alpha\)</span> to a lower value such as 0.007, the MiniBatch Perceptron algorithm should perform a bit better. Let’s see:</p>
+<div id="cell-40" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit models</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>loss_vec, mb_loss_vec, p_w, mb_p_w <span class="op">=</span> experiment(X <span class="op">=</span> X_nls, y <span class="op">=</span> y_nls, k <span class="op">=</span> <span class="dv">50</span>, alpha <span class="op">=</span> <span class="fl">0.01</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>loss_vec, mb_loss_vec, p_w, mb_p_w <span class="op">=</span> experiment(X <span class="op">=</span> X_nls, y <span class="op">=</span> y_nls, k <span class="op">=</span> <span class="dv">50</span>, alpha <span class="op">=</span> <span class="fl">0.007</span>)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create plots</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize <span class="op">=</span> (<span class="dv">10</span>, <span class="dv">5</span>))</span>
@@ -756,7 +756,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add labels</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Regular Perceptron"</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Minibatch Perceptron with $k = 50, </span><span class="ch">\\</span><span class="st">alpha = 0.01$"</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Minibatch Perceptron with $k = 50, </span><span class="ch">\\</span><span class="st">alpha = 0.007$"</span>)</span>
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Perceptron Iteration"</span>)</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Loss"</span>)</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Perceptron Iteration"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -770,7 +770,7 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 </div>
 <p>Although the MiniBatch algorithm did not converge to zero loss, it did perform better than the Perceptron algorithm. Compared to the Perceptron algorithm, the MiniBatch algorithm was able to achieve a lower loss value and a higher training accuracy in later iterations instead of jumping around constantly as seen in the normal Perceptron algorithm.</p>
 <p>Let’s see how well of a job it did for our final decision boundary:</p>
-<div id="cell-42" class="cell" data-execution_count="49">
+<div id="cell-42" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot final decision boundary</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">5</span>, <span class="dv">5</span>))</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plot_perceptron_data(X_nls, y_nls, ax)</span>
@@ -800,9 +800,10 @@ Figure&nbsp;1: Loss as a function of the number of perceptron updates
 <li><code>new_loss = self.model.loss(X, y)</code> Calculates the new loss in <strong>Linear</strong> time through dot product</li>
 <li><code>return i, abs(current_loss - new_loss)</code> Returns the index and the difference in loss in <strong>Constant</strong> time</li>
 </ul>
+<p>It’s essential to specify that while the runtime is linear, it’s not solely in the number of data points, <span class="math inline">\(n\)</span>. Rather, it’s linear in the dimensionality of the feature space, <span class="math inline">\(p\)</span>. This is because each weight update involves operations proportional to the number of features. So, the time complexity of <code>opt.step()</code> in the Perceptron algorithm is indeed linear, <span class="math inline">\(O(p)\)</span>.</p>
 <p>Since the largest time complexity is <strong>Linear</strong>, we can say that the time complexity of <code>opt.step()</code> is <strong>Linear</strong> or <span class="math inline">\(O(n)\)</span>.</p>
 <p>Now let’s go over <code>minibatch_perceptron.py</code>. <code>opt.step()</code></p>
-<p>The two are actually very similar, the only difference in runtime is in the <code>grad()</code> function. In the normal Perceptron algorithm, the <code>grad()</code> function is called on a single data point, while in the MiniBatch Perceptron algorithm, the <code>grad()</code> function is called on a mini-batch of data points. This means in the normal Perceptron algorithm, a single dot product between 1 x <span class="math inline">\(p\)</span> vectors is computed whereas in the MiniBatch perceptron algorithm a matrix product between <span class="math inline">\(X^{k \times p}\)</span> and <span class="math inline">\(w^{p \times 1}\)</span> is computed. Calculating the matrix product is equal to calculating <span class="math inline">\(k\)</span> dot products, which are both <span class="math inline">\(O(p)\)</span> operations. Meaning that the runtime of the Matrix product is <span class="math inline">\(O(k \cdot p)\)</span>.</p>
+<p>The two are actually very similar, the only difference in runtime is in the <code>grad()</code> function. In the normal Perceptron algorithm, the <code>grad()</code> function is called on a single data point, while in the MiniBatch Perceptron algorithm, the <code>grad()</code> function is called on a mini-batch of data points. This means in the normal Perceptron algorithm, a single dot product between 1 x <span class="math inline">\(p\)</span> vectors is computed whereas in the MiniBatch perceptron algorithm a matrix product between <span class="math inline">\(X^{k \times p}\)</span> and <span class="math inline">\(w^{p \times 1}\)</span> is computed. Calculating the matrix product is equal to calculating <span class="math inline">\(k\)</span> dot products, which are both <span class="math inline">\(O(p)\)</span> operations. Meaning that the runtime of the Matrix product is <span class="math inline">\(O(k \cdot p)\)</span>. However, there’s more to consider. In addition to the matrix product, the runtime also depends on the size of the mini-batch, <span class="math inline">\(k\)</span>. So, the overall time complexity of opt.step() in the MiniBatch Perceptron algorithm is <span class="math inline">\(O(k \cdot p)\)</span>, considering both the matrix product and the size of the mini-batch.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
