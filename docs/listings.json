@@ -2,9 +2,15 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/cs-451-quant-project/dwood_test.html",
+      "/posts/cs-451-quant-project/lstm_research.html",
+      "/posts/cs-451-quant-project/prelim-analysis.html",
+      "/posts/cs-451-quant-project/final.html",
+      "/posts/cs-451-quant-project/axiao_research.html",
       "/posts/reflective-goal-setting-post/goal-setting.html",
       "/posts/newton-post/index.html",
       "/posts/logistic-regression-post/index.html",
+      "/posts/cs-451-quant-project/quant_research.html",
       "/posts/perceptron-post/index.html",
       "/posts/mid-course-reflection/mid-course.html",
       "/posts/bias-post/index.html",
