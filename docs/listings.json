@@ -2,17 +2,17 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/new-test-post/goal-setting.html",
+      "/posts/reflective-goal-setting-post/goal-setting.html",
+      "/posts/newton-post/index.html",
       "/posts/logistic-regression-post/index.html",
       "/posts/perceptron-post/index.html",
       "/posts/mid-course-reflection/mid-course.html",
       "/posts/bias-post/index.html",
       "/posts/health-blog-post/index.html",
       "/posts/WiDS-post/index.html",
-      "/posts/New-test-thing-post/index.html",
-      "/posts/new-new-test-post/index.html",
+      "/posts/whose-cost-post/index.html",
       "/posts/classifying-penguin-post/index.html",
-      "/posts/new-test-post/index.html",
+      "/posts/reflective-goal-setting-post/index.html",
       "/posts/example-blog-post/index.html"
     ]
   }
