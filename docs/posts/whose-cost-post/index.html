@@ -356,7 +356,11 @@ Figure&nbsp;2: Loan Grade Distribution by Home Ownership
 <pre><code>0.7849438872731398</code></pre>
 </div>
 </div>
-<p>A score of around 79% is a good starting point for this model. However, I will be looking to improve this score by adding more features to the model. Through various combinations and manual testing we found that adding <code>loan_percent_income</code> and <code>person_home_ownership</code>, and removing <code>loan_amnt</code> to the model has an increase in accuracy as shown below:</p>
+<p>A score of around 79% is a good starting point for this model. However, I will be looking to improve this score by adding more features to the model. Through various combinations and manual testing we found that adding <code>loan_percent_income</code> and <code>person_home_ownership</code>, and removing <code>loan_amnt</code> to the model has an increase in accuracy.</p>
+<p>We found this through iterating through different combinations of features and seeing which ones had the most impact/success on the model.</p>
+<p>For example, we found that removing <code>loan_amnt</code>, generally increased the accuracy of the model for any subset of features that contained it.</p>
+<p>To replicate this, simply change the different combinations of features in the <code>cols</code> variable in the code below.</p>
+<p>With that said, let’s look at the new accuracy of the model using the subset of features we found to be the most successful.</p>
 <div id="cell-16" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'loan_percent_income'</span>, <span class="st">'loan_int_rate'</span>, <span class="st">'person_home_ownership_MORTGAGE'</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'person_home_ownership_OTHER'</span>,</span>
@@ -642,6 +646,8 @@ Figure&nbsp;2: Loan Grade Distribution by Home Ownership
 <h1>Conclusion</h1>
 <p>In conclusion, we have built a logistic regression model that predicts whether a prospective borrower is likely to default on a given loan. We have evaluated the model from both the bank’s perspective and the borrower’s perspective. We found that our model is able to predict the likelihood of defaulting on a loan with an expected profit per loan of <code>$1717.02</code>. We also found that older individuals are more likely to be approved for a loan under our proposed system, <code>HOMEIMPROVEMENT</code> has the highest approval rate under our proposed system, and the higher the income level, the more likely it will be for an individual to be approved for a loan under our proposed system. From this Blog Post I learned how to build a logistic regression model and evaluate it from both the bank’s perspective and the borrower’s perspective. I learned that it is important to consider both perspectives when building a model and that although a model can find the most profitable loans for a bank, it is also important to consider the impact on the borrower as these are real people with real complications.</p>
 <p>For me personally, fairness means that everyone has an equal opportunity to do a particular action that is should not be restricted by unchangeable characteristics.</p>
+<p>The question then arises: Considering that people seeking loans for medical expense have high rates of default, is it fair that it is more difficult for them to obtain access to credit?</p>
+<p>In my opinion, it is not fair that people seeking loans for medical expenses have a higher rate of default. This is because medical expenses are often unexpected and can be very costly. People should not be penalized for seeking medical treatment and should have access to credit when they need it most.</p>
 
 
 </section>
